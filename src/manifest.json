@@ -1,0 +1,39 @@
+{
+  "name": "dirot-ext",
+  "description": "A Vue.js web extension",
+  "version": null,
+  "manifest_version": 2,
+  "icons": {
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "dirot-ext",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "http://*.google.com/",
+    "https://*.yad2.co.il/realestate/*",
+    "https://madlan.co.il/bulletin/*",
+    "*"
+  ],
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "css": [],
+      "matches": ["https://*.yad2.co.il/*", "https://*.madlan.co.il/*"]
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "chrome_style": true
+  }
+}
