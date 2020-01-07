@@ -1,22 +1,24 @@
 <template>
   <div>
-    {{dira}}
-    <button @click="addDira">Send!</button>
+    <button @click="sendEmail">Send!</button>
+    <button @click="badDira">Bad!</button>
   </div>
 </template>
 
 <script>
-  import {mapState, mapActions} from 'vuex'
+import { mapState } from 'vuex';
 export default {
   data() {
     return {};
   },
-  computed: {
-    ...mapState(["dira"])
-  },
   methods: {
-    ...mapActions(["addDira"])
-  }
+    sendEmail() {
+      chrome.runtime.sendMessage({ message: 'goodDira' }, () => {});
+    },
+    badDira() {
+      chrome.runtime.sendMessage({ message: 'badDira' }, () => {});
+    },
+  },
 };
 </script>
 

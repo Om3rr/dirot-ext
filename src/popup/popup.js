@@ -10,22 +10,16 @@ new Vue({
   render: h => h(App),
 });
 
-
-chrome.runtime.onMessage.addListener(({message, dira}) => {
-  if(message === "OnDira") {
-    store.dispatch("newDira", dira);
-  }
-  if(message === "") {
-
+chrome.runtime.onMessage.addListener(({ message, dira }) => {
+  if (message === 'NewDira') {
+    store.dispatch('newDira', dira);
   }
 });
 
-
 function exists() {
-  chrome.browserAction.setIcon({path: {"64": "/icons/sign-lenguage-g.png"}})
+  chrome.browserAction.setIcon({ path: { '64': '/icons/sign-lenguage-g.png' } });
 }
 
-
 function missing() {
-  chrome.browserAction.setIcon({path: {"64": "/icons/whats-up.png"}})
+  chrome.browserAction.setIcon({ path: { '64': '/icons/whats-up.png' } });
 }
