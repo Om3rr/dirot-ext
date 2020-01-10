@@ -37,6 +37,7 @@ const yad2GetPopupParams = () => {
     size: component.querySelector('.table .cell:nth-child(3) .value').innerText,
     price: component.querySelector('.price').innerText,
     condition: bottom_component.querySelector('.more_data div:nth-child(1) span').innerText,
+    elevator: getByXpath("//span[text()='מעלית']").parentNode.className.includes('delete') ? 0 : 1,
     source: 'yad2',
   };
 };
@@ -63,6 +64,7 @@ let madlanGetPopupParams = () => {
     size: bottomComponent.children[2].innerText,
     price: topComponent.lastChild.firstChild.innerText,
     condition: getByXpath("//div[text()='מצב הנכס:']").parentElement.lastChild.innerText,
+    elevator: getByXpath("//span[text()='יש מעלית']") ? 0 : 1,
     source: 'madlan',
   };
 };
@@ -71,7 +73,9 @@ const yad2 = () => {
   if (!getYad2Id()) {
     return;
   }
-  sendDira(yad2GetPopupParams());
+  setTimeout(() => {
+    sendDira(yad2GetPopupParams());
+  }, 3000);
 };
 
 const madlan = () => {
